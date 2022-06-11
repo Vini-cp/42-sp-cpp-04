@@ -1,40 +1,45 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   WrongCat.cpp                                       :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: coder <coder@student.42.fr>                +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/03/02 19:21:10 by coder             #+#    #+#             */
-/*   Updated: 2022/03/02 19:22:02 by coder            ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
+// Author: vcordeir <vcordeir@student.42sp.org.br>
+// 42 SP
 
-#include "../include/WrongCat.hpp"
+#include "../include/WrongCat.h"
 
-WrongCat::WrongCat( void ) : WrongAnimal("WrongCat")
+//------------------------------------------------------------------------------
+
+WrongCat::WrongCat( void ) : WrongAnimal( "WrongCat" )
 {
-	std::cout << "WrongCat default constructor called" << std::endl;
+    std::cout << "WrongCat default constructor called" << std::endl;
 }
 
-WrongCat::WrongCat( const WrongCat &aml ) : WrongAnimal(aml.getType())
+//------------------------------------------------------------------------------
+
+WrongCat::WrongCat( const WrongCat& prWrongCat ) : WrongAnimal( prWrongCat )
 {
-	std::cout << "WrongCat copy constructor called" << std::endl;
+    std::cout << "WrongCat copy constructor called" << std::endl;
 }
+
+//------------------------------------------------------------------------------
 
 WrongCat::~WrongCat( void )
 {
-	std::cout << "WrongCat destructor called" << std::endl;
+    std::cout << "WrongCat destructor called" << std::endl;
 }
 
-WrongCat	&WrongCat::operator=( const WrongCat &aml )
+//------------------------------------------------------------------------------
+
+WrongCat& WrongCat::operator=( const WrongCat& prWrongCat )
 {
-	std::cout << "WrongCat copy assignment operator called " << std::endl;
-	WrongAnimal::operator=(aml);
-	return (*this);
+    std::cout << "WrongCat copy assignment operator called" << std::endl;
+    if ( this == &prWrongCat ) return *this;
+
+    setType( prWrongCat.getType() );
+    return *this;
 }
 
-void	WrongCat::makeSound( void ) const
+//------------------------------------------------------------------------------
+
+void WrongCat::makeSound( void ) const
 {
-	std::cout << "Meow Meow Meooooow ..." << std::endl;
+    std::cout << "Meow Meow Meooooow ..." << std::endl;
 }
+
+//------------------------------------------------------------------------------

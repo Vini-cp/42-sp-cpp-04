@@ -1,50 +1,76 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   Animal.cpp                                         :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: coder <coder@student.42.fr>                +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/03/01 02:04:06 by coder             #+#    #+#             */
-/*   Updated: 2022/03/02 19:35:00 by coder            ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
+// Author: vcordeir <vcordeir@student.42sp.org.br>
+// 42 SP
 
-#include "../include/Animal.hpp"
+#include "../include/Animal.h"
 
-Animal::Animal( void ) : _type("")
+//------------------------------------------------------------------------------
+
+Animal::Animal( void ) : mType( "" )
 {
-	std::cout << "Animal default constructor called" << std::endl;
+    std::cout << "Animal default constructor called" << std::endl;
 }
 
-Animal::Animal( const std::string &type ) : _type(type)
+//------------------------------------------------------------------------------
+
+Animal::Animal( const std::string& pType ) : mType( pType )
 {
-	std::cout << "Animal type constructor called" << std::endl;
+    std::cout << "Animal default constructor called" << std::endl;
 }
 
-Animal::Animal( const Animal &aml )
+//------------------------------------------------------------------------------
+
+Animal::Animal( const Animal& prAnimal )
 {
-	std::cout << "Animal copy constructor called" << std::endl;
-	_type = aml.getType();
+    std::cout << "Animal copy constructor called" << std::endl;
+    *this = prAnimal;
 }
+
+//------------------------------------------------------------------------------
 
 Animal::~Animal( void )
 {
-	std::cout << "Animal destructor called" << std::endl;
+    std::cout << "Animal destructor called" << std::endl;
 }
 
-Animal	&Animal::operator=( const Animal &aml )
+//------------------------------------------------------------------------------
+
+Animal& Animal::operator=( const Animal& prAnimal )
 {
-	std::cout << "Animal copy assignment operator called " << std::endl;
-	if(this == &aml)
-		return (*this);
-	_type = aml.getType();
-	return (*this);
+    std::cout << "Animal copy assignment operator called " << std::endl;
+    if ( this == &prAnimal ) return *this;
+
+    mType = prAnimal.getType();
+    return *this;
 }
 
-std::string	Animal::getType( void ) const
+//------------------------------------------------------------------------------
+
+std::string Animal::getType( void ) const
 {
-	return (_type);
+    return mType;
 }
 
-void	Animal::makeSound( void ) const {}
+//------------------------------------------------------------------------------
+
+void Animal::setType( std::string pType )
+{
+    mType = pType;
+}
+
+//------------------------------------------------------------------------------
+
+void Animal::makeSound( void ) const
+{
+    std::cout << "Animal sound ..." << std::endl;
+}
+
+//------------------------------------------------------------------------------
+
+std::ostream& operator<<( std::ostream& os, const Animal* prAnimal )
+{
+    os << "Animal : " << prAnimal->getType();
+
+    return os;
+}
+
+//------------------------------------------------------------------------------

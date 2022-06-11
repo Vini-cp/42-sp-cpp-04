@@ -1,40 +1,45 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   Dog.cpp                                            :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: coder <coder@student.42.fr>                +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/03/01 23:56:45 by coder             #+#    #+#             */
-/*   Updated: 2022/03/02 18:29:50 by coder            ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
+// Author: vcordeir <vcordeir@student.42sp.org.br>
+// 42 SP
 
-#include "../include/Dog.hpp"
+#include "../include/Dog.h"
 
-Dog::Dog( void ) : Animal("Dog")
+//------------------------------------------------------------------------------
+
+Dog::Dog( void ) : Animal( "Dog" )
 {
-	std::cout << "Dog default constructor called" << std::endl;
+    std::cout << "Dog default constructor called" << std::endl;
 }
 
-Dog::Dog( const Dog &aml ) : Animal(aml.getType())
+//------------------------------------------------------------------------------
+
+Dog::Dog( const Dog& prDog ) : Animal( prDog )
 {
-	std::cout << "Dog copy constructor called" << std::endl;
+    std::cout << "Dog copy constructor called" << std::endl;
 }
+
+//------------------------------------------------------------------------------
 
 Dog::~Dog( void )
 {
-	std::cout << "Dog destructor called" << std::endl;
+    std::cout << "Dog destructor called" << std::endl;
 }
 
-Dog	&Dog::operator=( const Dog &aml )
+//------------------------------------------------------------------------------
+
+Dog& Dog::operator=( const Dog& prDog )
 {
-	std::cout << "Dog copy assignment operator called " << std::endl;
-	Animal::operator=(aml);
-	return (*this);
+    std::cout << "Dog copy assignment operator called" << std::endl;
+    if ( this == &prDog ) return *this;
+
+    setType( prDog.getType() );
+    return *this;
 }
 
-void	Dog::makeSound( void ) const
+//------------------------------------------------------------------------------
+
+void Dog::makeSound( void ) const
 {
-	std::cout << "Woof woof woof ..." << std::endl;
+    std::cout << "Woof woof woof ..." << std::endl;
 }
+
+//------------------------------------------------------------------------------

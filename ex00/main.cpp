@@ -1,48 +1,60 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: coder <coder@student.42.fr>                +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/03/01 03:18:15 by coder             #+#    #+#             */
-/*   Updated: 2022/03/02 19:36:11 by coder            ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
+// Author: vcordeir <vcordeir@student.42sp.org.br>
+// 42 SP
 
-#include "./include/Cat.hpp"
-#include "./include/Dog.hpp"
-#include "./include/WrongCat.hpp"
+#include "./include/Cat.h"
+#include "./include/Dog.h"
+#include "./include/WrongCat.h"
 
 int main ( void )
 {
-	const Animal* meta = new Animal();
-	const Animal* j = new Dog();
-	const Animal* i = new Cat();
-	const Animal* k = i;
+    {
+        std::cout << "================ Cat ================" << std::endl;
+        const Animal* lCat = new Cat();
 
-	std::cout << j->getType() << " " << std::endl;
-	std::cout << i->getType() << " " << std::endl;
-	std::cout << k->getType() << " " << std::endl;
+        std::cout << std::endl << lCat << std::endl;
+        lCat->makeSound();
 
-	i->makeSound(); //will output the cat sound!
-	j->makeSound();
-	k->makeSound();
-	meta->makeSound();
+        delete lCat;
+        std::cout << "=====================================" << std::endl << std::endl;
+    }
+    {
+        std::cout << "================ Dog ================" << std::endl;
+            const Animal* lDog = new Dog();
 
-	const WrongAnimal* Wmeta = new WrongAnimal();
-	const WrongAnimal* Wi = new WrongCat();
+            std::cout << std::endl << lDog << std::endl;
+            lDog->makeSound();
 
-	std::cout << i->getType() << " " << std::endl;
+            delete lDog;
+        std::cout << "=====================================" << std::endl << std::endl;
+    }
+    {
+        std::cout << "============= Cat & Dog =============" << std::endl;
+        const Animal* meta = new Animal();
+        const Animal* j = new Dog();
+        const Animal* i = new Cat();
+        
+        std::cout << j->getType() << " " << std::endl;
+        std::cout << i->getType() << " " << std::endl;
+        
+        i->makeSound(); //will output the cat sound!
+        j->makeSound();
+        meta->makeSound();
 
-	Wi->makeSound(); //will output the cat sound!
-	Wmeta->makeSound();
+        delete meta;
+        delete j;
+        delete i;
+        std::cout << "=====================================" << std::endl << std::endl;
+    }
+    {
+        std::cout << "============= Wrong Cat =============" << std::endl;
+        const WrongAnimal* lWrongCat = new WrongCat();
 
-	delete meta;
-	delete j;
-	delete i;
-	delete Wmeta;
-	delete Wi;
+        std::cout << std::endl << lWrongCat << std::endl;
+        lWrongCat->makeSound();
 
-	return 0;
+        delete lWrongCat;
+        std::cout << "=====================================" << std::endl << std::endl;
+    }
+
+    return 0;
 }

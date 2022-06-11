@@ -1,53 +1,76 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   WrongAnimal.cpp                                    :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: coder <coder@student.42.fr>                +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/03/02 19:18:55 by coder             #+#    #+#             */
-/*   Updated: 2022/03/02 19:34:37 by coder            ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
+// Author: vcordeir <vcordeir@student.42sp.org.br>
+// 42 SP
 
-#include "../include/WrongAnimal.hpp"
+#include "../include/WrongAnimal.h"
 
-WrongAnimal::WrongAnimal( void ) : _type("")
+//------------------------------------------------------------------------------
+
+WrongAnimal::WrongAnimal( void ) : mType( "" )
 {
-	std::cout << "WrongAnimal default constructor called" << std::endl;
+    std::cout << "WrongAnimal default constructor called" << std::endl;
 }
 
-WrongAnimal::WrongAnimal( const std::string &type ) : _type(type)
+//------------------------------------------------------------------------------
+
+WrongAnimal::WrongAnimal( const std::string& pType ) : mType( pType )
 {
-	std::cout << "WrongAnimal type constructor called" << std::endl;
+    std::cout << "WrongAnimal default constructor called" << std::endl;
 }
 
-WrongAnimal::WrongAnimal( const WrongAnimal &aml )
+//------------------------------------------------------------------------------
+
+WrongAnimal::WrongAnimal( const WrongAnimal& prWrongAnimal )
 {
-	std::cout << "WrongAnimal copy constructor called" << std::endl;
-	_type = aml.getType();
+    std::cout << "WrongAnimal copy constructor called" << std::endl;
+    *this = prWrongAnimal;
 }
+
+//------------------------------------------------------------------------------
 
 WrongAnimal::~WrongAnimal( void )
 {
-	std::cout << "WrongAnimal destructor called" << std::endl;
+    std::cout << "WrongAnimal destructor called" << std::endl;
 }
 
-WrongAnimal	&WrongAnimal::operator=( const WrongAnimal &aml )
+//------------------------------------------------------------------------------
+
+WrongAnimal& WrongAnimal::operator=( const WrongAnimal& prWrongAnimal )
 {
-	std::cout << "WrongAnimal copy assignment operator called " << std::endl;
-	if(this == &aml)
-		return (*this);
-	_type = aml.getType();
-	return (*this);
+    std::cout << "WrongAnimal copy assignment operator called " << std::endl;
+    if ( this == &prWrongAnimal ) return *this;
+
+    mType = prWrongAnimal.getType();
+    return *this;
 }
 
-std::string	WrongAnimal::getType( void ) const
+//------------------------------------------------------------------------------
+
+std::string WrongAnimal::getType( void ) const
 {
-	return (_type);
+    return mType;
 }
 
-void	WrongAnimal::makeSound( void ) const
+//------------------------------------------------------------------------------
+
+void WrongAnimal::setType( std::string pType )
 {
-	std::cout << "Wrong Animal sound ..." << std::endl;
+    mType = pType;
 }
+
+//------------------------------------------------------------------------------
+
+void WrongAnimal::makeSound( void ) const
+{
+    std::cout << "WrongAnimal sound ..." << std::endl;
+}
+
+//------------------------------------------------------------------------------
+
+std::ostream& operator<<( std::ostream& os, const WrongAnimal* prWrongAnimal )
+{
+    os << "WrongAnimal : " << prWrongAnimal->getType();
+
+    return os;
+}
+
+//------------------------------------------------------------------------------
