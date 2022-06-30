@@ -40,6 +40,7 @@ WrongAnimal& WrongAnimal::operator=( const WrongAnimal& prWrongAnimal )
     if ( this == &prWrongAnimal ) return *this;
 
     mType = prWrongAnimal.getType();
+
     return *this;
 }
 

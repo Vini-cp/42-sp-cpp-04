@@ -55,6 +55,16 @@ int main ( void )
         delete lWrongCat;
         std::cout << "=====================================" << std::endl << std::endl;
     }
+    {
+        std::cout << "=========== Wrong Cat (2) ===========" << std::endl;
+        const WrongCat* lWrongCat = new WrongCat();
+
+        std::cout << std::endl << lWrongCat << std::endl;
+        lWrongCat->makeSound();
+
+        delete lWrongCat;
+        std::cout << "=====================================" << std::endl << std::endl;
+    }
 
     return 0;
 }

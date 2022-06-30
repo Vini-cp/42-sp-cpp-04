@@ -32,6 +32,7 @@ Cat& Cat::operator=( const Cat& prCat )
     if ( this == &prCat ) return *this;
 
     setType( prCat.getType() );
+
     return *this;
 }
 

@@ -2,16 +2,16 @@
 // 42 SP
 
 #ifndef ANIMAL_H
-# define ANIMAL_H
+#define ANIMAL_H
 
-# include <iostream>
+#include <iostream>
 
 class Animal
 {
 public:
 
     Animal( void );
-	Animal( const std::string& pType );
+    Animal( const std::string& pType );
     Animal( const Animal& prAnimal );
     virtual ~Animal( void );
 

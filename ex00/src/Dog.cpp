@@ -32,6 +32,7 @@ Dog& Dog::operator=( const Dog& prDog )
     if ( this == &prDog ) return *this;
 
     setType( prDog.getType() );
+
     return *this;
 }
 

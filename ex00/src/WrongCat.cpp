@@ -32,6 +32,7 @@ WrongCat& WrongCat::operator=( const WrongCat& prWrongCat )
     if ( this == &prWrongCat ) return *this;
 
     setType( prWrongCat.getType() );
+
     return *this;
 }
 
