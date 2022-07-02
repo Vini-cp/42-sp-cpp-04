@@ -31,7 +31,7 @@ Dog& Dog::operator=( const Dog& prDog )
     std::cout << "Dog copy assignment operator called" << std::endl;
     if ( this == &prDog ) return *this;
 
-    setType( prDog.getType() );
+    mType = prDog.mType;
 
     return *this;
 }
