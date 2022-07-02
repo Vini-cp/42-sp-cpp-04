@@ -57,22 +57,40 @@ int main ( void )
     }
     {
         std::cout << "============= Dog Brain =============" << std::endl;
-        Animal* lDog = new Dog();
+        Dog *lDog = new Dog();
 
-        for ( unsigned int i = 0; i < 150; i++ )
+        for ( unsigned int i = 0; i < 50; i++ )
         {
-            lDog->getBrain()->setIdea( "One Idea ... Meow!" );
+            lDog->getBrain()->setIdea( "One Idea ... Woof!" );
         }
 
-        for ( unsigned int i = 0; i < lDog->getBrain()->getNoIdeas() ; i++ )
+        Dog *lCopyDog = new Dog( *lDog );
+        
+        for ( unsigned int i = 0; i < 50; i++ )
         {
-            std::cout << lDog->getBrain()->getIdea( i ) << std::endl;
+            lDog->getBrain()->setIdea( "Ideas ??" );
         }
 
-        std::cout << std::endl << lDog << std::endl;
+        for ( unsigned int i = 0; i < 50; i++ )
+        {
+            lCopyDog->getBrain()->setIdea( "No Idea!" );
+        }
+
         lDog->makeSound();
 
+        lCopyDog->makeSound();
+
+        std::cout << std::endl << "Should be equals: " << std::endl;
+        std::cout << lDog->getBrain()->getIdea( 0 ) << std::endl;
+        std::cout << lCopyDog->getBrain()->getIdea( 0 ) << std::endl << std::endl;
+
+        std::cout << "Should NOT be equals: " << std::endl;
+        std::cout << lDog->getBrain()->getIdea( 50 ) << std::endl;
+        std::cout << lCopyDog->getBrain()->getIdea( 50 ) << std::endl << std::endl;
+
         delete lDog;
+        delete lCopyDog;
+
         std::cout << "=====================================" << std::endl << std::endl;
     }
 

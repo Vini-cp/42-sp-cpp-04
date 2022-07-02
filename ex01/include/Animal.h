@@ -19,7 +19,6 @@ public:
     Animal& operator=( const Animal& prAnimal );
 
     virtual std::string getType( void ) const;
-    virtual void setType( std::string pType );
     virtual void makeSound( void ) const;
 
     virtual Brain* getBrain( void );

@@ -34,7 +34,8 @@ Cat& Cat::operator=( const Cat& prCat )
     std::cout << "Cat copy assignment operator called" << std::endl;
     if ( this == &prCat ) return *this;
 
-    setType( prCat.getType() );
+    mType = prCat.mType;
+    mpBrain = prCat.mpBrain;
 
     return *this;
 }

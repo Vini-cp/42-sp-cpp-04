@@ -13,10 +13,10 @@ Dog::Dog( void ) : Animal( "Dog" )
 
 //------------------------------------------------------------------------------
 
-Dog::Dog( const Dog& prDog ) : Animal( prDog )
+Dog::Dog( const Dog& prDog ) : Animal( prDog ), mpBrain( NULL )
 {
-    mpBrain = new Brain();
     std::cout << "Dog copy constructor called" << std::endl;
+    *this = prDog;
 }
 
 //------------------------------------------------------------------------------
@@ -31,10 +31,17 @@ Dog::~Dog( void )
 
 Dog& Dog::operator=( const Dog& prDog )
 {
+    std::cout << "AQQQUIII!" << std::endl;
     std::cout << "Dog copy assignment operator called" << std::endl;
     if ( this == &prDog ) return *this;
 
-    setType( prDog.getType() );
+    mType = prDog.mType;
+
+    if ( !mpBrain )
+    {
+        mpBrain = new Brain();
+    }
+	*mpBrain = *prDog.mpBrain;
 
     return *this;
 }

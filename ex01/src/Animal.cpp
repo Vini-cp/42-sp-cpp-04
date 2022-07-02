@@ -53,13 +53,6 @@ std::string Animal::getType( void ) const
 
 //------------------------------------------------------------------------------
 
-void Animal::setType( std::string pType )
-{
-    mType = pType;
-}
-
-//------------------------------------------------------------------------------
-
 void Animal::makeSound( void ) const
 {
     std::cout << "Animal sound ..." << std::endl;
