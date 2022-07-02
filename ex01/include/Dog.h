@@ -13,11 +13,11 @@ public:
 
     Dog( void );
     Dog( const Dog& prDog );
-    ~Dog( void );
+    virtual ~Dog( void );
 
     Dog& operator=( const Dog& prDog );
 
-    void makeSound( void ) const;
+    virtual void makeSound( void ) const;
 
     Brain* getBrain( void );
 
