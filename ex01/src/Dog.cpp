@@ -31,7 +31,6 @@ Dog::~Dog( void )
 
 Dog& Dog::operator=( const Dog& prDog )
 {
-    std::cout << "AQQQUIII!" << std::endl;
     std::cout << "Dog copy assignment operator called" << std::endl;
     if ( this == &prDog ) return *this;
 
