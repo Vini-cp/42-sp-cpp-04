@@ -40,7 +40,7 @@ Dog& Dog::operator=( const Dog& prDog )
     {
         mpBrain = new Brain();
     }
-	*mpBrain = *prDog.mpBrain;
+    *mpBrain = *prDog.mpBrain;
 
     return *this;
 }

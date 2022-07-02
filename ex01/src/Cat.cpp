@@ -40,7 +40,7 @@ Cat& Cat::operator=( const Cat& prCat )
     {
         mpBrain = new Brain();
     }
-	*mpBrain = *prCat.mpBrain;
+    *mpBrain = *prCat.mpBrain;
 
     return *this;
 }
