@@ -12,7 +12,7 @@ class Animal
 public:
 
     Animal( void );
-	Animal( const std::string& pType );
+    Animal( const std::string& pType );
     Animal( const Animal& prAnimal );
     virtual ~Animal( void );
 
@@ -21,7 +21,7 @@ public:
     virtual std::string getType( void ) const;
     virtual void setType( std::string pType );
     virtual void makeSound( void ) const;
-	
+
     virtual Brain* getBrain( void );
 
 protected:

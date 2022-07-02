@@ -40,6 +40,7 @@ Animal& Animal::operator=( const Animal& prAnimal )
     if ( this == &prAnimal ) return *this;
 
     mType = prAnimal.getType();
+
     return *this;
 }
 

@@ -33,8 +33,10 @@ Brain& Brain::operator=( const Brain& prBrain )
     if ( this == &prBrain ) return *this;
 
     for ( unsigned int i = 0; i < prBrain.getNoIdeas(); i++ )
+    {
         setIdea( prBrain.getIdea( i ) );
-    
+    }
+
     return *this;
 }
 
@@ -58,12 +60,9 @@ unsigned int Brain::getNoIdeas( void ) const
 
 //------------------------------------------------------------------------------
 
-std::string	Brain::getIdea( unsigned int i ) const
+std::string Brain::getIdea( unsigned int i ) const
 {
-    if ( i < mNumberOfIdeas )
-    {
-        return ( mIdeas[ i ] );
-    }
+    if ( i < mNumberOfIdeas ) return ( mIdeas[ i ] );
 
     return ( "" );
 }

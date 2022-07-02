@@ -18,7 +18,7 @@ public:
 
     void setIdea( std::string idea );
     unsigned int getNoIdeas( void ) const;
-    std::string	getIdea( unsigned int i ) const;
+    std::string getIdea( unsigned int i ) const;
 
 private:
 
