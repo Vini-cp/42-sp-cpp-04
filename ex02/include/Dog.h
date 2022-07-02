@@ -13,7 +13,7 @@ public:
 
     Dog( void );
     Dog( const Dog& prDog );
-    virtual ~Dog( void );
+    ~Dog( void );
 
     Dog& operator=( const Dog& prDog );
 

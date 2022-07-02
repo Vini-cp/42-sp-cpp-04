@@ -31,7 +31,8 @@ WrongCat& WrongCat::operator=( const WrongCat& prWrongCat )
     std::cout << "WrongCat copy assignment operator called" << std::endl;
     if ( this == &prWrongCat ) return *this;
 
-    setType( prWrongCat.getType() );
+    mType = prWrongCat.mType;
+
     return *this;
 }
 

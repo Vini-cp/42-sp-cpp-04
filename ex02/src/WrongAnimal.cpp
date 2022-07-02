@@ -39,7 +39,8 @@ WrongAnimal& WrongAnimal::operator=( const WrongAnimal& prWrongAnimal )
     std::cout << "WrongAnimal copy assignment operator called " << std::endl;
     if ( this == &prWrongAnimal ) return *this;
 
-    mType = prWrongAnimal.getType();
+    mType = prWrongAnimal.mType;
+
     return *this;
 }
 

@@ -11,7 +11,7 @@ class WrongAnimal
 public:
 
     WrongAnimal( void );
-	WrongAnimal( const std::string& pType );
+    WrongAnimal( const std::string& pType );
     WrongAnimal( const WrongAnimal& prWrongAnimal );
     ~WrongAnimal( void );
 

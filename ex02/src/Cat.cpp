@@ -13,10 +13,10 @@ Cat::Cat( void ) : Animal( "Cat" )
 
 //------------------------------------------------------------------------------
 
-Cat::Cat( const Cat& prCat ) : Animal( prCat )
+Cat::Cat( const Cat& prCat ) : Animal( prCat ), mpBrain( NULL )
 {
-    mpBrain = new Brain();
     std::cout << "Cat copy constructor called" << std::endl;
+    *this = prCat;
 }
 
 //------------------------------------------------------------------------------
@@ -34,7 +34,14 @@ Cat& Cat::operator=( const Cat& prCat )
     std::cout << "Cat copy assignment operator called" << std::endl;
     if ( this == &prCat ) return *this;
 
-    setType( prCat.getType() );
+    mType = prCat.mType;
+
+    if ( !mpBrain )
+    {
+        mpBrain = new Brain();
+    }
+	*mpBrain = *prCat.mpBrain;
+
     return *this;
 }
 

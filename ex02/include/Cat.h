@@ -2,7 +2,7 @@
 // 42 SP
 
 #ifndef CAT_H
-# define CAT_H
+#define CAT_H
 
 #include "Animal.h"
 #include "Brain.h"

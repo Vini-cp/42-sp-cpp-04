@@ -39,7 +39,8 @@ Animal& Animal::operator=( const Animal& prAnimal )
     std::cout << "Animal copy assignment operator called " << std::endl;
     if ( this == &prAnimal ) return *this;
 
-    mType = prAnimal.getType();
+    mType = prAnimal.mType;
+
     return *this;
 }
 
@@ -48,13 +49,6 @@ Animal& Animal::operator=( const Animal& prAnimal )
 std::string Animal::getType( void ) const
 {
     return mType;
-}
-
-//------------------------------------------------------------------------------
-
-void Animal::setType( std::string pType )
-{
-    mType = pType;
 }
 
 //------------------------------------------------------------------------------
