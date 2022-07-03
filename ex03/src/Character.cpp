@@ -5,27 +5,69 @@
 
 //------------------------------------------------------------------------------
 
-Character::Character( std::string const& pName ) : mName( pName )
+Character::Character( void ) : mName( "" )
 {
-    mEquipedMaterias = 0;
     for ( int i = 0; i < 4; i++ )
     {
         mpMaterias[ i ] = NULL;
     }
-    std::cout << "Character default constructor called" << std::endl;
+}
+
+//------------------------------------------------------------------------------
+
+Character::Character( const std::string& pName ) : mName( pName )
+{
+    for ( int i = 0; i < 4; i++ )
+    {
+        mpMaterias[ i ] = NULL;
+    }
+}
+
+//------------------------------------------------------------------------------
+
+Character::Character( const Character& prCharacter )
+{
+    for ( int i = 0; i < 4; i++ )
+    {
+        mpMaterias[ i ] = NULL;
+    }
+    *this = prCharacter;
 }
 
 //------------------------------------------------------------------------------
 
 Character::~Character( void )
 {
-    delete mpMaterias;
-    std::cout << "Character default constructor called" << std::endl;
+    for ( unsigned int i = 0; i < 4; i++ )
+    {
+        delete mpMaterias[ i ];
+    }
 }
 
 //------------------------------------------------------------------------------
 
-std::string const& Character::getName() const
+Character& Character::operator=( const Character &prCharacter )
+{
+    if (this == &prCharacter) return *this;
+
+    mName = prCharacter.mName;
+
+    for ( unsigned int i = 0; i < 4; i++ )
+    {
+        delete mpMaterias[ i ];
+
+        if ( prCharacter.mpMaterias[ i ] != NULL )
+        {
+            mpMaterias[ i ] = prCharacter.mpMaterias[ i ]->clone();
+        }
+    }
+
+    return *this;
+}
+
+//------------------------------------------------------------------------------
+
+const std::string& Character::getName() const
 {
     return mName;
 }
@@ -34,15 +76,12 @@ std::string const& Character::getName() const
 
 void Character::equip( AMateria* ppAMateria )
 {
-    if ( mEquipedMaterias < 4 )
+    for ( int i = 0; i < 4; i++ )
     {
-        for ( int i = 0; i < 4; i++ )
+        if ( mpMaterias[ i ] != NULL )
         {
-            if ( mpMaterias[ i ] != NULL )
-            {
-                mpMaterias[ i ] = ppAMateria;
-                mEquipedMaterias++;
-            }
+            mpMaterias[ i ] = ppAMateria;
+            return ;
         }
     }
 }
@@ -51,10 +90,9 @@ void Character::equip( AMateria* ppAMateria )
 
 void Character::unequip( int idx )
 {
-    if ( mpMaterias[ idx ] != NULL )
+    if ( idx >= 0 && idx < 4 && mpMaterias[ idx ] != NULL )
     {
         mpMaterias[ idx ] = NULL;
-        mEquipedMaterias--;
     }
 }
 
@@ -62,19 +100,10 @@ void Character::unequip( int idx )
 
 void Character::use( int idx, ICharacter& prTarget )
 {
-    AMateria* lMateria = prTarget.getAMateria( idx );
-
-    if ( lMateria )
+    if ( idx >= 0 && idx < 4 && mpMaterias[ idx ] != NULL )
     {
-        lMateria->use( prTarget );
+        mpMaterias[ idx ]->use( prTarget );
     }
-}
-
-//------------------------------------------------------------------------------
-
-AMateria* Character::getAMateria( int idx )
-{
-    return mpMaterias[ idx ];
 }
 
 //------------------------------------------------------------------------------

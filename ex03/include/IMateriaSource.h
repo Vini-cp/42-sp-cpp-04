@@ -12,7 +12,7 @@ class IMateriaSource
 public:
     virtual ~IMateriaSource() {}
     virtual void learnMateria( AMateria* ) = 0;
-    virtual AMateria* createMateria( std::string const& pType ) = 0;
+    virtual AMateria* createMateria( const std::string& pType ) = 0;
 };
 
 #endif

@@ -7,21 +7,37 @@
 
 Cure::Cure( void ) : AMateria( "cure" )
 {
-    std::cout << "Cure default constructor called" << std::endl;
+}
+
+//------------------------------------------------------------------------------
+
+Cure::Cure( const Cure &prCure ) : AMateria("cure")
+{
+    *this = prCure;
 }
 
 //------------------------------------------------------------------------------
 
 Cure::~Cure( void )
 {
-    std::cout << "Cure destructor called" << std::endl;
+}
+
+//------------------------------------------------------------------------------
+
+Cure& Cure::operator=( const Cure &prCure )
+{
+    if ( this == &prCure ) return *this;
+
+    mType = prCure.mType;
+
+    return *this;
 }
 
 //------------------------------------------------------------------------------
 
 AMateria* Cure::clone( void ) const
 {
-    AMateria* lClone = new Cure();
+    AMateria* lClone = new Cure( *this );
 
     return lClone;
 }
@@ -30,7 +46,7 @@ AMateria* Cure::clone( void ) const
 
 void Cure::use( ICharacter& prTarget )
 {
-    std::cout << "* heals " << prTarget.getName() << "'s wounds *";
+    std::cout << "* heals " << prTarget.getName() << "'s wounds *" << std::endl;
 }
 
 //------------------------------------------------------------------------------

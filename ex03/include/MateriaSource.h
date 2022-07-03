@@ -5,16 +5,24 @@
 #define MATERIASOURCE_H
 
 #include "AMateria.h"
+#include "IMateriaSource.h"
 #include <iostream>
 
-class MateriaSource
+class MateriaSource : public IMateriaSource
 {
 public:
     MateriaSource( void );
+    MateriaSource( const MateriaSource& prMateriaSource );
     virtual ~MateriaSource();
 
+    MateriaSource& operator=( const MateriaSource& prMateriaSource );
+
     void learnMateria( AMateria* );
-    AMateria* createMateria( std::string const& pType );
+    AMateria* createMateria( const std::string& pType );
+
+private:
+    AMateria *mpMaterias[ 4 ];
+
 };
 
 #endif

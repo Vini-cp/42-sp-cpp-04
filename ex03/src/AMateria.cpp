@@ -5,23 +5,21 @@
 
 //------------------------------------------------------------------------------
 
-AMateria::AMateria( std::string const& pType ) : mType( pType )
+AMateria::AMateria( const std::string& pType ) : mType( pType )
 {
-    std::cout << "AMateria default constructor called" << std::endl;
 }
 
 //------------------------------------------------------------------------------
 
-std::string const& AMateria::getType() const
+AMateria::~AMateria( void )
+{
+}
+
+//------------------------------------------------------------------------------
+
+const std::string& AMateria::getType() const
 {
     return mType;
-}
-
-//------------------------------------------------------------------------------
-
-void AMateria::use( ICharacter& prTarget )
-{
-    (void) prTarget;
 }
 
 //------------------------------------------------------------------------------

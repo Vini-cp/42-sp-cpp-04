@@ -10,11 +10,13 @@
 class AMateria
 {
 public:
-    AMateria( std::string const& pType );
+    AMateria( const std::string& pType );
+    virtual ~AMateria( void );
 
     std::string const& getType( void ) const;
+
     virtual AMateria* clone( void ) const = 0;
-    virtual void use( ICharacter& pTarget );
+    virtual void use( ICharacter& pTarget ) = 0;
 
 protected:
     std::string mType;

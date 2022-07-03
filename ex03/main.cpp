@@ -1,6 +1,11 @@
 // Author: vcordeir <vcordeir@student.42sp.org.br>
 // 42 SP
 
+#include "include/MateriaSource.h"
+#include "include/Character.h"
+#include "include/Ice.h"
+#include "include/Cure.h"
+
 int main()
 {
     IMateriaSource* src = new MateriaSource();
@@ -9,7 +14,6 @@ int main()
     src->learnMateria(new Cure());
 
     ICharacter* me = new Character("me");
-
 
     AMateria* tmp;
 
@@ -27,5 +31,6 @@ int main()
     delete bob;
     delete me;
     delete src;
+
     return 0;
 }

@@ -7,21 +7,37 @@
 
 Ice::Ice( void ) : AMateria( "ice" )
 {
-    std::cout << "Ice default constructor called" << std::endl;
+}
+
+//------------------------------------------------------------------------------
+
+Ice::Ice( const Ice &prIce ) : AMateria( "ice" )
+{
+    *this = prIce;
 }
 
 //------------------------------------------------------------------------------
 
 Ice::~Ice( void )
 {
-    std::cout << "Ice destructor called" << std::endl;
+}
+
+//------------------------------------------------------------------------------
+
+Ice& Ice::operator=( const Ice &prIce )
+{
+    if ( this == &prIce ) return *this;
+
+    mType = prIce.mType;
+
+    return *this;
 }
 
 //------------------------------------------------------------------------------
 
 AMateria* Ice::clone( void ) const
 {
-    AMateria* lClone = new Ice();
+    AMateria* lClone = new Ice( *this );
 
     return lClone;
 }
@@ -30,7 +46,7 @@ AMateria* Ice::clone( void ) const
 
 void Ice::use( ICharacter& prTarget )
 {
-    std::cout << "* shoots an ice bolt at " << prTarget.getName() << " *";
+    std::cout << "* shoots an ice bolt at " << prTarget.getName() << " *" << std::endl;
 }
 
 //------------------------------------------------------------------------------
