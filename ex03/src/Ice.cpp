@@ -37,9 +37,7 @@ Ice& Ice::operator=( const Ice &prIce )
 
 AMateria* Ice::clone( void ) const
 {
-    AMateria* lClone = new Ice( *this );
-
-    return lClone;
+    return ( new Ice( *this ) );
 }
 
 //------------------------------------------------------------------------------

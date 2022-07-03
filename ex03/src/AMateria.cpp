@@ -11,8 +11,26 @@ AMateria::AMateria( const std::string& pType ) : mType( pType )
 
 //------------------------------------------------------------------------------
 
+AMateria::AMateria( AMateria const &prAMateria )
+{
+    *this = prAMateria;
+}
+
+//------------------------------------------------------------------------------
+
 AMateria::~AMateria( void )
 {
+}
+
+//------------------------------------------------------------------------------
+
+AMateria& AMateria::operator=( const AMateria &prAMateria )
+{
+	if (this == &prAMateria) return *this;
+
+    mType = prAMateria.mType;
+
+	return *this;
 }
 
 //------------------------------------------------------------------------------
@@ -20,6 +38,13 @@ AMateria::~AMateria( void )
 const std::string& AMateria::getType() const
 {
     return mType;
+}
+
+//------------------------------------------------------------------------------
+
+void AMateria::use( ICharacter& prTarget )
+{
+	(void) prTarget;
 }
 
 //------------------------------------------------------------------------------

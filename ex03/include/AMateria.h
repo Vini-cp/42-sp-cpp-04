@@ -7,16 +7,21 @@
 #include "ICharacter.h"
 #include <iostream>
 
+class ICharacter;
+
 class AMateria
 {
 public:
     AMateria( const std::string& pType );
+    AMateria( AMateria const &prAMateria );
     virtual ~AMateria( void );
+
+    AMateria& operator=( const AMateria &prAMateria );
 
     std::string const& getType( void ) const;
 
     virtual AMateria* clone( void ) const = 0;
-    virtual void use( ICharacter& pTarget ) = 0;
+    virtual void use( ICharacter& pTarget );
 
 protected:
     std::string mType;

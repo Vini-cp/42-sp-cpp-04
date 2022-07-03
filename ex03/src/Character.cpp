@@ -78,7 +78,7 @@ void Character::equip( AMateria* ppAMateria )
 {
     for ( int i = 0; i < 4; i++ )
     {
-        if ( mpMaterias[ i ] != NULL )
+        if ( mpMaterias[ i ] == NULL )
         {
             mpMaterias[ i ] = ppAMateria;
             return ;

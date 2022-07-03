@@ -1,4 +1,4 @@
-NAME 		:= animal
+NAME 		:= interface
 
 SRCS		:= main.cpp \
 			   src/AMateria.cpp \
